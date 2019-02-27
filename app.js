@@ -40,6 +40,9 @@ mongoose.connection.openUri('mongodb+srv://mgonzalez:Mirric1995.@cluster0-qzif2.
     console.log('Base de datos: \x1b[32m%s\x1b[0m', 'online');
 });
 
+// Configuraciones
+app.set('port', process.env.PORT || 3000);
+
 /* // Server index config
 var serveIndex = require('serve-index');
 app.use(express.static(__dirname + '/'))
@@ -57,7 +60,7 @@ app.use('/', appRoutes);
 
 
 // Excuchar peticiones
-app.listen(3000, () => {
+app.listen(app.get('port'), () => {
     console.log('Express server corriendo en el puerto 3000: \x1b[32m%s\x1b[0m', 'online');
 
 });
