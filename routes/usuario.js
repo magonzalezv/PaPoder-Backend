@@ -11,7 +11,7 @@ var Usuario = require('../models/usuario');
 // =====================================
 // Obtener todos los usuarios 
 // =====================================
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
 
     var desde = req.query.desde || 0;
     desde = Number(desde);
@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 // =====================================
 // Actualizar usuario
 // =====================================
-app.put('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaADMIN_o_MismoUsuario], (req, res) => {
+app.put('/:id', (req, res) => {
 
     var id = req.params.id;
     var body = req.body
