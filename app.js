@@ -32,11 +32,12 @@ var imagenesRoutes = require('./routes/imagenes');
 var loginRoutes = require('./routes/login');
 
 // Conexión a la base de datos
-var MongoClient = require('mongodb').MongoClient;
+mongoose.connect('mongodb+srv://mgonzalez:Mirric1995@cluster0-qzif2.mongodb.net/test?retryWrites=true', (err, res) => {
+    if (err) {
+        throw err;
+    }
 
-var uri = "mongodb+srv://mgonzalez:Mirric1995@cluster0-qzif2.mongodb.net/test?retryWrites=true";
-MongoClient.connect(uri, function(err, db) {
-  db.close();
+    console.log('Base de datos: \x1b[32m%s\x1b[0m', 'online');
 });
 
 
