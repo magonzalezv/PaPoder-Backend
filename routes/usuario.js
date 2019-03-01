@@ -13,6 +13,7 @@ var Usuario = require('../models/usuario');
 // =====================================
 app.get('/', (req, res, next) => {
 console.log('Hola migue');
+return next();
 
 });
 
