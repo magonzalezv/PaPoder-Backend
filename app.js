@@ -6,15 +6,9 @@ var bodyParser = require('body-parser');
 // Inicializar variables
 var app = express();
 
-app.use(express.static('public'));
+app.use(cors());
 
-// CORS
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
-    next();
-});
+app.use(express.static('public'));
 
 // Body Parser
 // parse application/x-www-form-urlencoded
@@ -32,7 +26,7 @@ var imagenesRoutes = require('./routes/imagenes');
 var loginRoutes = require('./routes/login');
 
 // Conexión a la base de datos
-mongoose.connect('mongodb+srv://mgonzalez:Mirric1995@cluster0-qzif2.mongodb.net/test?retryWrites=true', (err, res) => {
+mongoose.connection.openUri('mongodb+srv://mgonzalez:Mirric1995@cluster0-qzif2.mongodb.net/test?retryWrites=true', (err, res) => {
     if (err) {
         throw err;
     }
