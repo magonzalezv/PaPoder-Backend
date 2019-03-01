@@ -11,7 +11,7 @@ var Usuario = require('../models/usuario');
 // =====================================
 // Obtener todos los usuarios 
 // =====================================
-app.get('/', (req, res, next) => {
+app.get('/todos', (req, res) => {
 
     var desde = req.query.desde || 0;
     desde = Number(desde);
