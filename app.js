@@ -32,10 +32,12 @@ var imagenesRoutes = require('./routes/imagenes');
 var loginRoutes = require('./routes/login');
 
 // Conexión a la base de datos
-mongoose.connect('mongodb+srv://mgonzalez:Mirric1995@cluster0-qzif2.mongodb.net/test?retryWrites=true')
-.then(db => console.log('db conected'))
-.catch(err => console.log(err))
+var MongoClient = require('mongodb').MongoClient;
 
+var uri = "mongodb+srv://mgonzalez:Mirric1995@cluster0-qzif2.mongodb.net/test?retryWrites=true";
+MongoClient.connect(uri, function(err, db) {
+  db.close();
+});
 
 
 /* // Server index config
