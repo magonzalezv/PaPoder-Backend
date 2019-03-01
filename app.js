@@ -57,8 +57,10 @@ app.use('/img', imagenesRoutes);
 app.use('/', appRoutes);
 
 
+app.set('port', process.env.PORT || 3000);
+
 // Excuchar peticiones
-app.listen(3000, () => {
+app.listen(app.get('port'), () => {
     console.log('Express server corriendo en el puerto 3000: \x1b[32m%s\x1b[0m', 'online');
 
 });
