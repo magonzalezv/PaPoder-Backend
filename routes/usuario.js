@@ -35,6 +35,7 @@ app.get('/', (req, res, next) => {
                         usuarios: usuarios,
                         total: conteo
                     });
+                    return next();
                 });
 
 
@@ -48,7 +49,7 @@ app.get('/', (req, res, next) => {
 // =====================================
 // Actualizar usuario
 // =====================================
-app.put('/:id', (req, res) => {
+app.put('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaADMIN_o_MismoUsuario], (req, res) => {
 
     var id = req.params.id;
     var body = req.body
